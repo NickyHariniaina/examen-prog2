@@ -34,4 +34,9 @@ public class Combattant {
     }
     return true;
   }
+
+  public boolean ajouterTitre(String titre) {
+    titres.add(titre);
+    return true;
+  }
 }

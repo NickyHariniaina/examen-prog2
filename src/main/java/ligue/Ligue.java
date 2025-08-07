@@ -39,7 +39,7 @@ public class Ligue {
     }).collect(Collectors.toList());
   }
 
-  public boolean terminerUnMatch(Match match, Combattant gagnant, Combattant perdant) {
+  public boolean terminerUnMatch(Match match, Combattant gagnant, Combattant perdant, String titre) {
     switch (match.getTypeMatch()) {
       case AMICAL:
         return true;
@@ -50,6 +50,7 @@ public class Ligue {
       case COMPETITIF:
         gagnant.misAJourPalmares(true, false);
         perdant.misAJourPalmares(false, false);
+        gagnant.ajouterTitre(titre);
         return true;
       default:
         return false;
