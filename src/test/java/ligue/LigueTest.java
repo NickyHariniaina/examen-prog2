@@ -120,4 +120,44 @@ public class LigueTest {
     Assertions.assertEquals(List.of(match1, match2), ligue.matchFaitPar(combattant1));
     Assertions.assertEquals(0, ligue.matchFaitPar(combattant3).size());
   }
+
+  @Test
+  void terminer_match() {
+    Ligue ligue = new Ligue("UFC", new ArrayList<Combattant>(), new ArrayList<Match>());
+
+    Combattant combattant1 = new Combattant("001", "Doe", "John", "JohnDoe", 60.56, new ArrayList<String>(),
+        new Palmares());
+
+    Combattant combattant2 = new Combattant("002", "Doen", "Johny", "JohnyDo", 75.00, new ArrayList<String>(),
+        new Palmares());
+
+    Combattant combattant3 = new Combattant("003", "Doez", "Johny", "JohnDeep", 61.72, new ArrayList<String>(),
+        new Palmares());
+
+    Combattant combattant4 = new Combattant("004", "Do", "Johnas", "JohnasDo", 85.00, new ArrayList<String>(),
+        new Palmares());
+
+    Match match1 = new Match("001", LocalDate.of(2025, 5, 12), "Mahamasina", combattant1, combattant2,
+        TypeMatch.AMICAL);
+
+    Match match2 = new Match("002", LocalDate.of(2025, 5, 13), "Mahamasina", combattant1, combattant4,
+        TypeMatch.COMPETITIF);
+
+    Match match3 = new Match("003", LocalDate.of(2025, 5, 13), "Mahamasina", combattant2, combattant4,
+        TypeMatch.OFFICIEL);
+
+    Match match4 = new Match("004", LocalDate.of(2025, 5, 13), "Mahamasina", combattant2, combattant4,
+        TypeMatch.OFFICIEL);
+
+    ligue.creerMatch(match1);
+    ligue.creerMatch(match2);
+    ligue.creerMatch(match3);
+    ligue.creerMatch(match4);
+
+    ligue.terminerUnMatch(match1);
+    ligue.terminerUnMatch(match2, match2.getCombattant1(), match2.getCombattant2(), "Meilleure combattant du monde");
+    ligue.terminerUnMatch(match3, match3.getCombattant1(), match3.getCombattant2(), "");
+    ligue.terminerUnMatch(match4);
+  }
+
 }
