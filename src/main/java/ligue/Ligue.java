@@ -16,6 +16,10 @@ public class Ligue {
   private List<Combattant> combattants = new ArrayList<>();
   private List<Match> matchs = new ArrayList<>();
 
+  public void ajouterNouveauCombattant(Combattant combattant) {
+    throw new Error("Indisponible");
+  }
+
   public void creerMatch(Match match) {
     throw new Error("Indisponible");
   }
