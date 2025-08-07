@@ -11,4 +11,15 @@ public class Palmares {
   private int victoire;
   private int egalite;
 
+  public void misAJourDefaite() {
+    this.defaite++;
+  }
+
+  public void misAJourVictoire() {
+    this.victoire++;
+  }
+
+  public void misAJourEgalite() {
+    this.egalite++;
+  }
 }

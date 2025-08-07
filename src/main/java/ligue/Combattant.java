@@ -22,4 +22,16 @@ public class Combattant {
   private List<String> titres = new ArrayList<>();
   private Palmares palmares = new Palmares();
 
+  public boolean misAJourPalmares(boolean aGagne, boolean estEgalite) {
+    if (aGagne && !estEgalite) {
+      this.palmares.misAJourEgalite();
+    } else if (aGagne && estEgalite) {
+      this.palmares.misAJourEgalite();
+    } else if (!aGagne && !estEgalite) {
+      this.palmares.misAJourDefaite();
+    } else {
+      return false;
+    }
+    return true;
+  }
 }

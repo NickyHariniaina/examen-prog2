@@ -38,4 +38,39 @@ public class Ligue {
       return m.getCombattant1().equals(combattant) || m.getCombattant2().equals(combattant);
     }).collect(Collectors.toList());
   }
+
+  public boolean terminerUnMatch(Match match, Combattant gagnant, Combattant perdant) {
+    switch (match.getTypeMatch()) {
+      case AMICAL:
+        return true;
+      case OFFICIEL:
+        gagnant.misAJourPalmares(true, false);
+        perdant.misAJourPalmares(false, false);
+        return true;
+      case COMPETITIF:
+        gagnant.misAJourPalmares(true, false);
+        perdant.misAJourPalmares(false, false);
+        return true;
+      default:
+        return false;
+    }
+  }
+
+  public boolean terminerUnMatch(Match match) {
+    switch (match.getTypeMatch()) {
+      case AMICAL:
+        return true;
+      case OFFICIEL:
+        match.getCombattant2().misAJourPalmares(true, true);
+        match.getCombattant1().misAJourPalmares(true, true);
+        return true;
+      case COMPETITIF:
+        match.getCombattant1().misAJourPalmares(true, true);
+        match.getCombattant2().misAJourPalmares(true, true);
+        return true;
+      default:
+        return false;
+    }
+  }
+
 }
