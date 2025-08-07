@@ -20,4 +20,6 @@ public class Combattant {
   private final String nomCombattant;
   private double poids;
   private List<String> titres = new ArrayList<>();
+  private Palmares palmares = new Palmares();
+
 }

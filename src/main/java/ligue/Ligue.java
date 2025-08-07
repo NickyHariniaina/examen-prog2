@@ -15,4 +15,12 @@ public class Ligue {
   private final String nom;
   private List<Combattant> combattants = new ArrayList<>();
   private List<Match> matchs = new ArrayList<>();
+
+  public void creerMatch(Match match) {
+    throw new Error("Indisponible");
+  }
+
+  public List<Match> matchFaitPar(Combattant combattant) {
+    throw new Error("Indisponible");
+  }
 }
