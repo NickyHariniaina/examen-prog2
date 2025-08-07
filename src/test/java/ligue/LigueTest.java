@@ -10,7 +10,7 @@ import org.junit.jupiter.api.Test;
 public class LigueTest {
 
   @Test
-  void doit_ajouter_un_match() {
+  void doit_ajouter_un_match_ok() {
 
     Ligue ligue = new Ligue("UFC", new ArrayList<Combattant>(), new ArrayList<Match>());
 
@@ -28,11 +28,32 @@ public class LigueTest {
     ligue.creerMatch(match1);
 
     Assertions.assertEquals(1, ligue.getMatchs().size());
-    Assertions.assertEquals(match1, ligue.getMatchs().get(1));
+    Assertions.assertEquals(match1, ligue.getMatchs().get(0));
   }
 
   @Test
-  void doit_ajouter_un_combattant() {
+  void doit_ajouter_un_match_ko() {
+    Ligue ligue = new Ligue("UFC", new ArrayList<Combattant>(), new ArrayList<Match>());
+
+    Combattant combattant1 = new Combattant("001", "Doe", "John", "JohnDoe", 60.56, new ArrayList<String>(),
+        new Palmares());
+
+    Combattant combattant2 = new Combattant("002", "Doen", "Johny", "JohnyDo", 75.00, new ArrayList<String>(),
+        new Palmares());
+
+    Match match1 = new Match("001", LocalDate.of(2025, 5, 12), "Mahamasine", combattant1, combattant2,
+        TypeMatch.AMICAL);
+
+    ligue.ajouterNouveauCombattant(combattant1);
+    ligue.ajouterNouveauCombattant(combattant2);
+    ligue.creerMatch(match1);
+    boolean result = ligue.creerMatch(match1);
+
+    Assertions.assertFalse(result);
+  }
+
+  @Test
+  void doit_ajouter_un_combattant_ok() {
 
     Ligue ligue = new Ligue("UFC", new ArrayList<Combattant>(), new ArrayList<Match>());
 
@@ -51,7 +72,19 @@ public class LigueTest {
   }
 
   @Test
-  void doit_afficher_match_de_combattant() {
+  void doit_ajouter_un_combattant_ko() {
+    Ligue ligue = new Ligue("UFC", new ArrayList<Combattant>(), new ArrayList<Match>());
+
+    Combattant combattant1 = new Combattant("001", "Doe", "John", "JohnDoe", 60.56, new ArrayList<String>(),
+        new Palmares());
+
+    ligue.ajouterNouveauCombattant(combattant1);
+    boolean result = ligue.ajouterNouveauCombattant(combattant1);
+    Assertions.assertFalse(result);
+  }
+
+  @Test
+  void doit_afficher_match_de_combattant_ok() {
     Ligue ligue = new Ligue("UFC", new ArrayList<Combattant>(), new ArrayList<Match>());
 
     Combattant combattant1 = new Combattant("001", "Doe", "John", "JohnDoe", 60.56, new ArrayList<String>(),

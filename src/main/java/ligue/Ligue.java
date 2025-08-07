@@ -2,6 +2,7 @@ package ligue;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -16,15 +17,25 @@ public class Ligue {
   private List<Combattant> combattants = new ArrayList<>();
   private List<Match> matchs = new ArrayList<>();
 
-  public void ajouterNouveauCombattant(Combattant combattant) {
-    throw new Error("Indisponible");
+  public boolean ajouterNouveauCombattant(Combattant combattant) {
+    if (combattants.contains(combattant)) {
+      return false;
+    }
+    combattants.add(combattant);
+    return true;
   }
 
-  public void creerMatch(Match match) {
-    throw new Error("Indisponible");
+  public boolean creerMatch(Match match) {
+    if (matchs.contains(match)) {
+      return false;
+    }
+    matchs.add(match);
+    return true;
   }
 
   public List<Match> matchFaitPar(Combattant combattant) {
-    throw new Error("Indisponible");
+    return matchs.stream().filter(m -> {
+      return m.getCombattant1().equals(combattant) || m.getCombattant2().equals(combattant);
+    }).collect(Collectors.toList());
   }
 }
